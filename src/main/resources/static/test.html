@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Test</title>
+</head>
+<body>
+    <h1>JavaScript Loading Test</h1>
+    <div id="output"></div>
+    
+    <script>
+        console.log("Inline script loaded");
+        document.getElementById('output').innerHTML = "Page loaded successfully";
+    </script>
+    
+    <script src="/js/auth.js"></script>
+    <script>
+        console.log("After auth.js loaded");
+        console.log("getAuthToken function exists:", typeof getAuthToken);
+        
+        if (typeof getAuthToken !== 'undefined') {
+            document.getElementById('output').innerHTML += "<br>auth.js loaded successfully";
+        } else {
+            document.getElementById('output').innerHTML += "<br>ERROR: auth.js functions not available";
+        }
+    </script>
+    
+    <script src="/js/api.js"></script>
+    <script>
+        console.log("After api.js loaded");
+        console.log("API object exists:", typeof API);
+        console.log("window.API:", window.API);
+        
+        if (typeof API !== 'undefined') {
+            document.getElementById('output').innerHTML += "<br>api.js loaded successfully - API object available";
+        } else {
+            document.getElementById('output').innerHTML += "<br>ERROR: API object not available";
+        }
+    </script>
+</body>
+</html>

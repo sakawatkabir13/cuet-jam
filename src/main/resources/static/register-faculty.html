@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUET Jam - Faculty Registration</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="/images/cuet-logo.png" alt="CUET Logo" class="logo" onerror="this.style.display='none'">
+                <h1>Faculty Registration</h1>
+                <p>Join the CUET Jam community</p>
+            </div>
+            
+            <form id="facultyRegisterForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">CUET Faculty Email *</label>
+                    <input type="email" id="email" name="email" placeholder="name@cuet.ac.bd" required>
+                    <div class="form-hint">Must use your official CUET faculty email</div>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="form-hint">Minimum 6 characters</div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="department">Department *</label>
+                    <select id="department" name="department" required>
+                        <option value="">Select Department</option>
+                        <option value="ARCH">Architecture</option>
+                        <option value="BME">Biomedical Engineering</option>
+                        <option value="CE">Civil Engineering</option>
+                        <option value="CSE">Computer Science & Engineering</option>
+                        <option value="EEE">Electrical And Electronic Engineering</option>
+                        <option value="ETE">Electronics & Telecommunication Engineering</option>
+                        <option value="MME">Materials And Metallurgical Engineering</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="MIE">Mechatronics & Industrial Engineering</option>
+                        <option value="PME">Petroleum And Mining Engineering</option>
+                        <option value="URP">Urban & Regional Planning</option>
+                        <option value="WRE">Water Resources Engineering</option>
+                    </select>
+                    <div class="error-message" id="departmentError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="designation">Designation</label>
+                    <input type="text" id="designation" name="designation" placeholder="e.g., Professor, Associate Professor, Assistant Professor">
+                    <div class="error-message" id="designationError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="researchAreas">Research Areas</label>
+                    <textarea id="researchAreas" name="researchAreas" rows="3" placeholder="Enter your research interests and areas"></textarea>
+                    <div class="error-message" id="researchAreasError"></div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="registerBtn">
+                        <span class="btn-text">Register</span>
+                        <span class="btn-spinner" style="display: none;">
+                            <i class="spinner"></i> Registering...
+                        </span>
+                    </button>
+                </div>
+                
+                <div class="alert" id="alert" style="display: none;"></div>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login.html">Login here</a></p>
+                <p>Looking for different registration?</p>
+                <div class="register-links">
+                    <a href="/register-student.html" class="btn btn-outline">Student Registration</a>
+                    <a href="/register-alumni.html" class="btn btn-outline">Alumni Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Email Verification Modal -->
+    <div id="verificationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Email Verification</h3>
+            <p>Please enter the verification code sent to your email:</p>
+            <form id="verificationForm">
+                <div class="form-group">
+                    <input type="text" id="verificationCode" placeholder="Enter 6-digit code" maxlength="6" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeVerificationModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="verifyBtn">Verify</button>
+                </div>
+            </form>
+            <div class="alert" id="verificationAlert" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="/js/auth.js"></script></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/register-faculty.js"></script>
+</body>
+</html>

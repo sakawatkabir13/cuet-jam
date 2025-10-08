@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUET Jam - Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <img src="/images/cuet-logo.png" alt="CUET Logo" class="nav-logo" onerror="this.style.display='none'">
+                <span class="nav-title">CUET Jam</span>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#" class="nav-link home-link" onclick="showSection('welcome')">
+                    <i class="icon-home"></i> Home
+                </a>
+                <a href="#" class="nav-link" onclick="showSection('cuet-today')">CUET Today</a>
+                <a href="#" class="nav-link" onclick="showSection('lost-found')">Lost & Found</a>
+                <a href="#" class="nav-link" onclick="showSection('collab')">Collab</a>
+                <a href="#" class="nav-link" onclick="showSection('resources')">Resources</a>
+                <a href="#" class="nav-link" onclick="showSection('alumni')">Alumni</a>
+                <a href="#" class="nav-link" onclick="showSection('faculty')">Faculty</a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline" onclick="showProfile()">
+                    <i class="icon-user"></i> My Profile
+                </button>
+                <button class="btn btn-outline" onclick="logout()">
+                    <i class="icon-logout"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section id="welcome" class="welcome-section">
+                <!-- Floating Background Images -->
+                <div class="welcome-background">
+                    <div class="bg-image bg-1"></div>
+                    <div class="bg-image bg-2"></div>
+                    <div class="bg-image bg-3"></div>
+                    <div class="bg-image bg-4"></div>
+                </div>
+                
+                <div class="welcome-content">
+                    <div class="welcome-header">
+                        <h1>Welcome to CUET Jam</h1>
+                        <p id="userWelcome">Loading...</p>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <button class="action-card" onclick="showSection('cuet-today')">
+                            <i class="icon-news"></i>
+                            <h3>CUET Today</h3>
+                            <p>Latest news and announcements</p>
+                        </button>
+                        
+                        <button class="action-card" onclick="showSection('lost-found')">
+                            <i class="icon-search"></i>
+                            <h3>Lost & Found</h3>
+                            <p>Find or report lost items</p>
+                        </button>
+                        
+                        <button class="action-card" onclick="showSection('collab')">
+                            <i class="icon-collab"></i>
+                            <h3>Study Collab</h3>
+                            <p>Find study partners and collaborators</p>
+                        </button>
+                        
+                        <button class="action-card" onclick="showSection('resources')">
+                            <i class="icon-resources"></i>
+                            <h3>Resources</h3>
+                            <p>Academic and study resources</p>
+                        </button>
+                        
+                        <button class="action-card" onclick="showSection('alumni')">
+                            <i class="icon-alumni"></i>
+                            <h3>Alumni Network</h3>
+                            <p>Connect with CUET alumni</p>
+                        </button>
+                        
+                        <button class="action-card" onclick="showSection('faculty')">
+                            <i class="icon-faculty"></i>
+                            <h3>Faculty</h3>
+                            <p>Browse faculty profiles</p>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CUET Today Section -->
+            <section id="cuet-today" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>CUET Today</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="showCreatePostModal()">Create Post</button>
+                        <input type="text" id="searchPosts" placeholder="Search posts..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="postsContainer" class="posts-container">
+                    <div class="loading">Loading posts...</div>
+                </div>
+            </section>
+            
+            <!-- Lost & Found Section -->
+            <section id="lost-found" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Lost & Found</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="showCreatePostModal()">Create Post</button>
+                        <select id="lostFoundFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="LOST">Lost</option>
+                            <option value="FOUND">Found</option>
+                        </select>
+                        <input type="text" id="searchLostFound" placeholder="Search..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="lostFoundContainer" class="posts-container">
+                    <div class="loading">Loading posts...</div>
+                </div>
+            </section>
+            
+            <!-- Collab Section -->
+            <section id="collab" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Study Collab</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="showCreatePostModal()">Create Post</button>
+                        <select id="collabSectionFilter" class="filter-select">
+                            <option value="">All Sections</option>
+                            <option value="RESEARCH">Research</option>
+                            <option value="COMPETITION_PARTNER">Competition Partner</option>
+                            <option value="ACADEMICS">Academics</option>
+                            <option value="OTHERS">Others</option>
+                        </select>
+                        <select id="collabStatusFilter" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="OPEN">Open</option>
+                            <option value="CLOSED">Closed</option>
+                        </select>
+                        <input type="text" id="searchCollab" placeholder="Search..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="collabContainer" class="posts-container">
+                    <div class="loading">Loading posts...</div>
+                </div>
+            </section>
+            
+            <!-- Resources Section -->
+            <section id="resources" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Resource Library</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-primary" onclick="showCreatePostModal()">Add Resource</button>
+                        <select id="resourceCategoryFilter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="ACADEMICS">Academics</option>
+                            <option value="HIGHER_STUDY">Higher Study</option>
+                            <option value="CHOTHA">Chotha</option>
+                            <option value="OTHERS">Others</option>
+                        </select>
+                        <input type="text" id="searchResources" placeholder="Search..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="resourcesContainer" class="posts-container">
+                    <div class="loading">Loading resources...</div>
+                </div>
+            </section>
+            
+            <!-- Alumni Section -->
+            <section id="alumni" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Alumni Network</h2>
+                    <div class="section-actions">
+                        <select id="alumniDepartmentFilter" class="filter-select">
+                            <option value="">All Departments</option>
+                        </select>
+                        <input type="text" id="searchAlumni" placeholder="Search alumni..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="alumniContainer" class="profiles-container">
+                    <div class="loading">Loading alumni...</div>
+                </div>
+            </section>
+            
+            <!-- Faculty Section -->
+            <section id="faculty" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Faculty</h2>
+                    <div class="section-actions">
+                        <select id="facultyDepartmentFilter" class="filter-select">
+                            <option value="">All Departments</option>
+                        </select>
+                        <input type="text" id="searchFaculty" placeholder="Search faculty..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="facultyContainer" class="profiles-container">
+                    <div class="loading">Loading faculty...</div>
+                </div>
+            </section>
+            
+            <!-- Admin Panel (Only visible to admins) -->
+            <section id="admin-panel" class="content-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Admin Panel</h2>
+                </div>
+                
+                <div class="admin-cards">
+                    <div class="admin-card">
+                        <h3>Pending Alumni Approvals</h3>
+                        <div id="pendingAlumniContainer">
+                            <div class="loading">Loading pending approvals...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>My Profile</h3>
+                <button class="modal-close" onclick="closeProfileModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="profileForm">
+                    <div id="profileContent">
+                        <div class="loading">Loading profile...</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Post Modal -->
+    <div id="createPostModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Post</h3>
+                <button class="modal-close" onclick="closeCreatePostModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="createPostForm">
+                    <div class="form-group">
+                        <label for="postTitle">Title *</label>
+                        <input type="text" id="postTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="postDescription">Description *</label>
+                        <textarea id="postDescription" rows="4" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Create Post</button>
+                        <button type="button" class="btn btn-outline" onclick="closeCreatePostModal()">Cancel</button>
+                    </div>
+                </form>
+                <div class="alert" id="createPostAlert" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/js/auth.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/home.js"></script>
+</body>
+</html>

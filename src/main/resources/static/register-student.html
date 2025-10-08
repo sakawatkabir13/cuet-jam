@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUET Jam - Student Registration</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="/images/cuet-logo.png" alt="CUET Logo" class="logo" onerror="this.style.display='none'">
+                <h1>Student Registration</h1>
+                <p>Join the CUET Jam community</p>
+            </div>
+            
+            <form id="studentRegisterForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message" id="nameError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">CUET Student Email *</label>
+                    <input type="email" id="email" name="email" placeholder="u1234567@student.cuet.ac.bd" required>
+                    <div class="form-hint">Must use your official CUET student email</div>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="form-hint">Minimum 6 characters</div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password *</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div class="error-message" id="confirmPasswordError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="batch">Batch *</label>
+                    <select id="batch" name="batch" required>
+                        <option value="">Select Batch</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
+                    <div class="error-message" id="batchError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="department">Department *</label>
+                    <select id="department" name="department" required>
+                        <option value="">Select Department</option>
+                        <option value="ARCH">Architecture</option>
+                        <option value="BME">Biomedical Engineering</option>
+                        <option value="CE">Civil Engineering</option>
+                        <option value="CSE">Computer Science & Engineering</option>
+                        <option value="EEE">Electrical And Electronic Engineering</option>
+                        <option value="ETE">Electronics & Telecommunication Engineering</option>
+                        <option value="MME">Materials And Metallurgical Engineering</option>
+                        <option value="ME">Mechanical Engineering</option>
+                        <option value="MIE">Mechatronics & Industrial Engineering</option>
+                        <option value="PME">Petroleum And Mining Engineering</option>
+                        <option value="URP">Urban & Regional Planning</option>
+                        <option value="WRE">Water Resources Engineering</option>
+                    </select>
+                    <div class="error-message" id="departmentError"></div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="registerBtn">
+                        <span class="btn-text">Register</span>
+                        <span class="btn-spinner" style="display: none;">
+                            <i class="spinner"></i> Registering...
+                        </span>
+                    </button>
+                </div>
+                
+                <div class="alert" id="alert" style="display: none;"></div>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="/login.html">Login here</a></p>
+                <p>Looking for different registration?</p>
+                <div class="register-links">
+                    <a href="/register-faculty.html" class="btn btn-outline">Faculty Registration</a>
+                    <a href="/register-alumni.html" class="btn btn-outline">Alumni Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Email Verification Modal -->
+    <div id="verificationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Email Verification</h3>
+            <p>Please enter the verification code sent to your email:</p>
+            <form id="verificationForm">
+                <div class="form-group">
+                    <input type="text" id="verificationCode" placeholder="Enter 6-digit code" maxlength="6" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeVerificationModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="verifyBtn">Verify</button>
+                </div>
+            </form>
+            <div class="alert" id="verificationAlert" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="/js/auth.js"></script></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/register-student.js"></script>
+</body>
+</html>

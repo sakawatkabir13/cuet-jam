@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Test</title>
+</head>
+<body>
+    <h1>Debug Test Page</h1>
+    <p>Current time: <script>document.write(new Date().toLocaleString());</script></p>
+    
+    <script>
+        console.log('DEBUG: Test page loaded at', new Date());
+        
+        // Test if our modified home.js is loading correctly
+        fetch('./js/home.js')
+            .then(response => response.text())
+            .then(text => {
+                if (text.includes('DEBUG: showCreatePostModal called for section:')) {
+                    console.log('SUCCESS: home.js contains our debug statements');
+                } else {
+                    console.log('ERROR: home.js does not contain our debug statements');
+                }
+            });
+    </script>
+</body>
+</html>

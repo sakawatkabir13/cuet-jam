@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUET Jam - Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="/images/cuet-logo.png" alt="CUET Logo" class="logo" onerror="this.style.display='none'">
+                <h1>CUET Jam</h1>
+                <p>Welcome back to the CUET community platform</p>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="loginBtn">
+                        <span class="btn-text">Login</span>
+                        <span class="btn-spinner" style="display: none;">
+                            <i class="spinner"></i> Logging in...
+                        </span>
+                    </button>
+                </div>
+                
+                <div class="form-links">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+                
+                <div class="alert" id="alert" style="display: none;"></div>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Don't have an account?</p>
+                <div class="register-links">
+                    <a href="/register-student.html" class="btn btn-outline">Student Registration</a>
+                    <a href="/register-faculty.html" class="btn btn-outline">Faculty Registration</a>
+                    <a href="/register-alumni.html" class="btn btn-outline">Alumni Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Email Verification Modal -->
+    <div id="verificationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Email Verification Required</h3>
+            <p>Please enter the verification code sent to your email:</p>
+            <form id="verificationForm">
+                <div class="form-group">
+                    <input type="text" id="verificationCode" placeholder="Enter 6-digit code" maxlength="6" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Verify</button>
+                    <button type="button" class="btn btn-outline" onclick="closeVerificationModal()">Cancel</button>
+                </div>
+            </form>
+            <div class="alert" id="verificationAlert" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Reset Password</h3>
+            
+            <!-- Step 1: Email Input -->
+            <div id="forgotPasswordStep1">
+                <p>Enter your email address to receive a password reset OTP:</p>
+                <form id="forgotPasswordForm">
+                    <div class="form-group">
+                        <input type="email" id="forgotEmail" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Send OTP</button>
+                        <button type="button" class="btn btn-outline" onclick="closeForgotPasswordModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Step 2: OTP and New Password -->
+            <div id="forgotPasswordStep2" style="display: none;">
+                <p>Enter the OTP sent to your email and your new password:</p>
+                <form id="resetPasswordForm">
+                    <div class="form-group">
+                        <input type="text" id="resetOTP" placeholder="Enter 6-digit OTP" maxlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="newPassword" placeholder="Enter new password" minlength="6" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password" minlength="6" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Reset Password</button>
+                        <button type="button" class="btn btn-outline" onclick="backToEmailStep()">Back</button>
+                        <button type="button" class="btn btn-outline" onclick="closeForgotPasswordModal()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="alert" id="forgotAlert" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="/js/auth.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>

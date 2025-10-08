@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUET Jam - Welcome</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="/images/cuet-logo.png" alt="CUET Logo" class="logo" onerror="this.style.display='none'">
+                <h1>CUET Jam</h1>
+                <p>Welcome to the CUET Community Platform</p>
+            </div>
+            
+            <div class="auth-footer">
+                <p>Connect with students, faculty, and alumni from CUET</p>
+                <div class="register-links">
+                    <a href="/login.html" class="btn btn-primary">Login</a>
+                    <a href="/register-student.html" class="btn btn-outline">Student Registration</a>
+                    <a href="/register-faculty.html" class="btn btn-outline">Faculty Registration</a>
+                    <a href="/register-alumni.html" class="btn btn-outline">Alumni Registration</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-redirect if already authenticated
+        if (localStorage.getItem('authToken')) {
+            window.location.href = '/home.html';
+        }
+    </script>
+</body>
+</html>
